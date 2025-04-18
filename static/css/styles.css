@@ -1,0 +1,129 @@
+/* Custom styles for the Real Estate Assistant chatbot */
+
+/* Primary colors */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --issue-agent-color: #dc3545;
+    --tenancy-agent-color: #17a2b8;
+    --user-message-bg: #d9fdd3;
+    --assistant-message-bg: #f0f2f5;
+    --border-radius: 0.5rem;
+  }
+  
+  /* Button styling */
+  .stButton button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .stButton button:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Chat message styling */
+  .chat-message {
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    display: flex;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+  .chat-message.user {
+    background-color: var(--user-message-bg);
+  }
+  
+  .chat-message.assistant {
+    background-color: var(--assistant-message-bg);
+  }
+  
+  /* Avatar and message layout */
+  .chat-message .avatar {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chat-message .message {
+    width: 80%;
+  }
+  
+  .chat-message .avatar img {
+    max-width: 78px;
+    max-height: 78px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+/* Agent tag styling */
+.agent-tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background-color: #007bff;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .agent-tag.issue {
+    background-color: var(--issue-agent-color);
+  }
+  
+  .agent-tag.tenancy {
+    background-color: var(--tenancy-agent-color);
+  }
+  
+  /* File uploader styling */
+  .uploadedFile {
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Sidebar styling */
+  .sidebar .stTextInput>div>div>input {
+    border-radius: var(--border-radius);
+  }
+  
+  /* Layout improvements */
+  .stApp {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Image styling */
+  .stImage img {
+    border-radius: 0.3rem;
+    border: 1px solid #ddd;
+  }
+  
+  /* Spinner styling */
+  .stSpinner > div {
+    border-color: var(--primary-color) !important;
+  }
+  
+  /* Footer styling */
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: #666;
+  }
+  
+  /* Location caption styling */
+  .caption-text {
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+  }

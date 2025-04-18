@@ -1,7 +1,7 @@
-openai
-langchain
-langgraph
-streamlit
-python-dotenv
-Pillow
-numpy
+openai==1.12.0
+langchain==0.1.5
+langgraph==0.0.25
+streamlit==1.32.0
+python-dotenv==1.0.0
+Pillow==10.2.0
+numpy==1.26.3
