@@ -15,16 +15,16 @@ def extract_location(text):
     Returns:
         str or None: Extracted location if found
     """
-    # Common location patterns
+  
     country_pattern = r'in\s+([A-Z][a-z]+|USA|UK|US|EU|UAE)'
     city_state_pattern = r'in\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)'
     
-    # Try to find countries first
+ 
     country_match = re.search(country_pattern, text)
     if country_match:
         return country_match.group(1)
     
-    # Try cities/states
+
     city_match = re.search(city_state_pattern, text)
     if city_match:
         return city_match.group(1)
@@ -44,11 +44,11 @@ def answer_tenancy_question(state: Dict[str, Any]) -> Dict[str, Any]:
     query = state["query"]
     location = state["location"] or extract_location(query)
     
-    # Get relevant knowledge base information
+
     regional_info = get_region_info(location) if location else None
     general_info = get_general_tenancy_info()
     
-    # Create context for the model
+
     context = "General tenancy information:\n"
     context += json.dumps(general_info, indent=2) + "\n\n"
     
@@ -56,7 +56,7 @@ def answer_tenancy_question(state: Dict[str, Any]) -> Dict[str, Any]:
         context += f"Region-specific information for {location}:\n"
         context += json.dumps(regional_info, indent=2) + "\n\n"
     
-    # Create the full prompt
+
     tenancy_prompt = f"""
     {config.TENANCY_FAQ_BASE_PROMPT}
     
@@ -71,7 +71,7 @@ def answer_tenancy_question(state: Dict[str, Any]) -> Dict[str, Any]:
     If location-specific details would be important, mention this in your response.
     """
     
-    # Initialize OpenAI model
+
     tenancy_model = ChatOpenAI(
         temperature=config.TENANCY_FAQ_TEMPERATURE,
         model=config.TENANCY_FAQ_MODEL,
@@ -79,17 +79,17 @@ def answer_tenancy_question(state: Dict[str, Any]) -> Dict[str, Any]:
         api_key=config.OPENAI_API_KEY
     )
     
-    # Get response from the model
+
     response = tenancy_model.invoke(tenancy_prompt)
     
-    # Structure the response
+
     tenancy_response = {
         "agent": "Tenancy FAQ Agent",
         "answer": response.content,
         "location_used": location if location else "None specified"
     }
     
-    # Update state with response
+
     state["response"] = tenancy_response
     
     return state
