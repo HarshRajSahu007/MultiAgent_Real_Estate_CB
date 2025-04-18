@@ -6,7 +6,7 @@ import json
 
 from agents.router_agent import route_query
 from agents.issue_agent import process_issue
-from agents.tenacy_agent import answer_tenancy_question
+from MultiAgent_Real_Estate_CB.agents.tenancy_agent import answer_tenancy_question
 
 class AgentState(TypedDict):
     messages: List[Dict[str, Any]]
