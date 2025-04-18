@@ -11,3 +11,59 @@
 2025-04-19 01:32:37,402 - __main__ - INFO - New input received - Query: hello, Image: False
 2025-04-19 01:32:37,421 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': '', 'query': 'hello', 'response': None}
 2025-04-19 01:32:37,422 - __main__ - ERROR - The TENANCY_FAQ agent failed to generate a response
+2025-04-19 01:43:34,521 - __main__ - INFO - Initializing session messages
+2025-04-19 01:43:34,521 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:43:35,193 - __main__ - INFO - Initializing session messages
+2025-04-19 01:43:35,193 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:43:41,265 - __main__ - INFO - New input received - Query: hello, Image: False
+2025-04-19 01:43:41,288 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 01:43:41,289 - __main__ - ERROR - The TENANCY_FAQ agent failed to generate a response
+2025-04-19 01:45:08,029 - __main__ - INFO - Initializing session messages
+2025-04-19 01:45:08,029 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:45:08,179 - __main__ - INFO - Initializing session messages
+2025-04-19 01:45:08,179 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:45:11,229 - __main__ - INFO - New input received - Query: hello, Image: False
+2025-04-19 01:45:11,250 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 01:45:11,251 - __main__ - ERROR - The TENANCY_FAQ agent failed to generate a response
+2025-04-19 01:45:50,811 - __main__ - INFO - Initializing session messages
+2025-04-19 01:45:50,811 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:45:56,173 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-19 01:45:57,501 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 01:45:57,520 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='fc998f85-4b6a-4687-835d-796968b05cd8', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "fc998f85-4b6a-4687-835d-796968b05cd8"
+upload_url: "/_stcore/upload_file/827de4ca-5b07-457d-9cf1-42efe13056cd/fc998f85-4b6a-4687-835d-796968b05cd8"
+delete_url: "/_stcore/upload_file/827de4ca-5b07-457d-9cf1-42efe13056cd/fc998f85-4b6a-4687-835d-796968b05cd8"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-19 01:45:57,520 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 01:46:00,185 - __main__ - INFO - Initializing session messages
+2025-04-19 01:46:00,186 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:46:01,188 - __main__ - INFO - Initializing session messages
+2025-04-19 01:46:01,189 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:46:16,445 - __main__ - INFO - New input received - Query: hello, Image: True
+2025-04-19 01:46:17,476 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 01:46:17,481 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='fc998f85-4b6a-4687-835d-796968b05cd8', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "fc998f85-4b6a-4687-835d-796968b05cd8"
+upload_url: "/_stcore/upload_file/827de4ca-5b07-457d-9cf1-42efe13056cd/fc998f85-4b6a-4687-835d-796968b05cd8"
+delete_url: "/_stcore/upload_file/827de4ca-5b07-457d-9cf1-42efe13056cd/fc998f85-4b6a-4687-835d-796968b05cd8"
+), 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 01:46:17,482 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 01:46:21,204 - __main__ - INFO - New input received - Query: hello, Image: True
+2025-04-19 01:46:22,103 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 01:46:22,111 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='fc998f85-4b6a-4687-835d-796968b05cd8', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "fc998f85-4b6a-4687-835d-796968b05cd8"
+upload_url: "/_stcore/upload_file/827de4ca-5b07-457d-9cf1-42efe13056cd/fc998f85-4b6a-4687-835d-796968b05cd8"
+delete_url: "/_stcore/upload_file/827de4ca-5b07-457d-9cf1-42efe13056cd/fc998f85-4b6a-4687-835d-796968b05cd8"
+), 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 01:46:22,112 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 01:49:18,760 - __main__ - INFO - Initializing session messages
+2025-04-19 01:49:18,760 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:49:19,176 - __main__ - INFO - Initializing session messages
+2025-04-19 01:49:19,176 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:49:19,263 - __main__ - INFO - Initializing session messages
+2025-04-19 01:49:19,263 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:49:20,175 - __main__ - INFO - Initializing session messages
+2025-04-19 01:49:20,176 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:49:23,694 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-19 01:49:24,962 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 01:49:24,981 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='f3e34911-62e9-443e-ad04-e8f088d3f993', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "f3e34911-62e9-443e-ad04-e8f088d3f993"
+upload_url: "/_stcore/upload_file/7f2072fa-6625-4cf7-b1a6-653e523d5e0c/f3e34911-62e9-443e-ad04-e8f088d3f993"
+delete_url: "/_stcore/upload_file/7f2072fa-6625-4cf7-b1a6-653e523d5e0c/f3e34911-62e9-443e-ad04-e8f088d3f993"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-19 01:49:24,981 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response

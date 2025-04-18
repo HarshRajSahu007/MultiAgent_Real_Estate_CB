@@ -15,7 +15,7 @@ ROUTER_MODEL = "gpt-3.5-turbo"
 # Default temperature settings
 ROUTER_TEMPERATURE = 0.1
 ISSUE_DETECTION_TEMPERATURE = 0.2
-TENANCY_FAQ_TEMPERATURE = 0.1
+TENANCY_FAQ_TEMPERATURE = 0.7
 
 # Maximum tokens for responses
 MAX_TOKENS = 1000
