@@ -1,0 +1,13 @@
+2025-04-19 01:32:33,742 - __main__ - INFO - Initializing session messages
+2025-04-19 01:32:33,743 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:32:33,743 - __main__ - INFO - Initializing session messages
+2025-04-19 01:32:33,774 - __main__ - INFO - Initializing session messages
+2025-04-19 01:32:33,775 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:32:33,775 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:32:34,046 - __main__ - INFO - Initializing session messages
+2025-04-19 01:32:34,047 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:32:36,216 - __main__ - INFO - Initializing session messages
+2025-04-19 01:32:36,216 - __main__ - INFO - Creating agent workflow
+2025-04-19 01:32:37,402 - __main__ - INFO - New input received - Query: hello, Image: False
+2025-04-19 01:32:37,421 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 01:32:37,422 - __main__ - ERROR - The TENANCY_FAQ agent failed to generate a response

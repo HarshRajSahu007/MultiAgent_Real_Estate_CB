@@ -8,9 +8,9 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Agent configuration
-ROUTER_MODEL = "gpt-4-turbo"
-ISSUE_DETECTION_MODEL = "gpt-4-vision-preview"
-TENANCY_FAQ_MODEL = "gpt-4-turbo"
+TENANCY_FAQ_MODEL = "gpt-3.5-turbo"       
+ISSUE_DETECTION_MODEL = "gpt-4-vision-preview" 
+ROUTER_MODEL = "gpt-3.5-turbo"    
 
 # Default temperature settings
 ROUTER_TEMPERATURE = 0.1

@@ -6,7 +6,7 @@ import json
 
 from agents.router_agent import route_query
 from agents.issue_agent import process_issue
-from MultiAgent_Real_Estate_CB.agents.tenancy_agent import answer_tenancy_question
+from agents.tenancy_agent import answer_tenancy_question
 
 class AgentState(TypedDict):
     messages: List[Dict[str, Any]]
@@ -23,36 +23,73 @@ def create_agent_workflow():
     Returns:
         StateGraph: The configured workflow graph
     """
-
     workflow = StateGraph(AgentState)
     
-
+    # Add nodes
     workflow.add_node("router", route_query)
     workflow.add_node("issue_detection", process_issue)
     workflow.add_node("tenancy_faq", answer_tenancy_question)
     
-
-    def should_route_to_issue_detection(state):
+    # Define condition functions
+    def route_to_issue_detection(state):
         return state["agent_type"] == "ISSUE_DETECTION"
     
-    def should_route_to_tenancy_faq(state):
+    def route_to_tenancy_faq(state):
         return state["agent_type"] == "TENANCY_FAQ"
     
-
+    # Add conditional edges with string keys
     workflow.add_conditional_edges(
         "router",
         {
-            should_route_to_issue_detection: "issue_detection",
-            should_route_to_tenancy_faq: "tenancy_faq",
-        },
-        default="router"  
+            "issue_detection": route_to_issue_detection,
+            "tenancy_faq": route_to_tenancy_faq,
+        }
     )
     
-
+    # Add terminal edges
     workflow.add_edge("issue_detection", END)
     workflow.add_edge("tenancy_faq", END)
     
-
+    # Set entry point
     workflow.set_entry_point("router")
     
     return workflow
+def initialize_state(query: str, image=None, location=None):
+    """
+    Initialize the agent state
+    
+    Args:
+        query: User's text query
+        image: Optional image file
+        location: Optional location information
+        
+    Returns:
+        AgentState: The initialized state
+    """
+    return {
+        "messages": [{"role": "user", "content": query}],
+        "agent_type": "ROUTER",  # Start with the router
+        "image": image,
+        "location": location,
+        "query": query,
+        "response": None
+    }
+
+def execute_workflow(workflow, state):
+    """
+    Execute the agent workflow
+    
+    Args:
+        workflow: The LangGraph workflow
+        state: The initial state
+        
+    Returns:
+        AgentState: The final state after workflow execution
+    """
+    # Create a compiled workflow for better performance
+    app = workflow.compile()
+    
+    # Execute the workflow and get the final state
+    result = app.invoke(state)
+    
+    return result
