@@ -6,4 +6,3 @@ python-dotenv
 Pillow
 numpy
 langchain_openai
-hashlib
