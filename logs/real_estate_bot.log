@@ -755,3 +755,7 @@ delete_url: "/_stcore/upload_file/4ef5e938-ebc0-4191-893a-5b78e7c93c35/dbc863a2-
 2025-04-21 18:22:25,695 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-04-21 18:22:25,701 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'what are the tenancy laws in UK ?'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': 'UK', 'query': 'what are the tenancy laws in UK ?', 'response': {'agent': 'Tenancy FAQ Agent', 'answer': "In the UK, tenants have specific protections under the Housing Act. Landlords are required to protect tenants' deposits in government-approved schemes within 30 days of receipt. When it comes to eviction, there are two main procedures: Section 21 for no-fault evictions and Section 8 for evictions with cause. It's essential for both landlords and tenants to understand these procedures to ensure a fair and legal tenancy agreement. If you have any specific questions about UK tenancy laws or need further clarification, feel free to ask.", 'location_used': 'UK'}}
 2025-04-21 18:22:25,701 - __main__ - INFO - Displaying assistant response
+2025-04-21 19:01:20,603 - __main__ - INFO - Initializing session messages
+2025-04-21 19:01:20,604 - __main__ - INFO - Creating agent workflow
+2025-04-21 19:08:01,131 - __main__ - INFO - Initializing session messages
+2025-04-21 19:08:01,131 - __main__ - INFO - Creating agent workflow
