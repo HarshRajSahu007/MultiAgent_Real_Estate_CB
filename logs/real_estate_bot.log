@@ -67,3 +67,691 @@ upload_url: "/_stcore/upload_file/7f2072fa-6625-4cf7-b1a6-653e523d5e0c/f3e34911-
 delete_url: "/_stcore/upload_file/7f2072fa-6625-4cf7-b1a6-653e523d5e0c/f3e34911-62e9-443e-ad04-e8f088d3f993"
 ), 'location': '', 'query': 'Please analyze this image', 'response': None}
 2025-04-19 01:49:24,981 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 19:51:25,008 - __main__ - INFO - Initializing session messages
+2025-04-19 19:51:25,009 - __main__ - INFO - Creating agent workflow
+2025-04-19 19:51:34,149 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-19 19:51:34,826 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-04-19 19:51:34,832 - __main__ - ERROR - Error processing request: module 'openai' has no attribute 'error'
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 35, in route_query
+    response = router_model.invoke(router_prompt)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 368, in invoke
+    self.generate_prompt(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 937, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 759, in generate
+    self._generate_with_cache(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 1002, in _generate_with_cache
+    result = self._generate(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_openai/chat_models/base.py", line 991, in _generate
+    response = self.client.create(**payload)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py", line 929, in create
+    return self._post(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1276, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 949, in request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1057, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************1N8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 197, in main
+    final_state = execute_workflow(st.session_state.workflow, initial_state)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/utils/langraph_workflow.py", line 93, in execute_workflow
+    result = app.invoke(state)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2739, in invoke
+    for chunk in self.stream(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2377, in stream
+    for _ in runner.tick(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/runner.py", line 158, in tick
+    run_with_retry(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/retry.py", line 39, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 622, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 376, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 43, in route_query
+    except openai.error.RateLimitError as e:
+AttributeError: module 'openai' has no attribute 'error'
+2025-04-19 19:52:40,293 - __main__ - INFO - Initializing session messages
+2025-04-19 19:52:40,294 - __main__ - INFO - Creating agent workflow
+2025-04-19 19:52:40,432 - __main__ - INFO - Initializing session messages
+2025-04-19 19:52:40,432 - __main__ - INFO - Creating agent workflow
+2025-04-19 19:52:43,223 - __main__ - INFO - New input received - Query: hello, Image: False
+2025-04-19 19:52:43,245 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 19:52:43,247 - __main__ - ERROR - The TENANCY_FAQ agent failed to generate a response
+2025-04-19 19:53:05,246 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-19 19:53:07,296 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 19:53:07,316 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='3edbe1a3-dc69-44f0-b59b-ad80b7302fc5', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "3edbe1a3-dc69-44f0-b59b-ad80b7302fc5"
+upload_url: "/_stcore/upload_file/8c4e673d-7cad-4c33-94d9-20650fb5a656/3edbe1a3-dc69-44f0-b59b-ad80b7302fc5"
+delete_url: "/_stcore/upload_file/8c4e673d-7cad-4c33-94d9-20650fb5a656/3edbe1a3-dc69-44f0-b59b-ad80b7302fc5"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-19 19:53:07,316 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 19:59:55,627 - __main__ - INFO - Initializing session messages
+2025-04-19 19:59:55,628 - __main__ - INFO - Creating agent workflow
+2025-04-19 19:59:58,382 - __main__ - INFO - Initializing session messages
+2025-04-19 19:59:58,382 - __main__ - INFO - Creating agent workflow
+2025-04-19 20:00:03,929 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-19 20:00:05,707 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 20:00:05,727 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='93dbc390-c33e-4e9e-b162-036799a1ae90', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "93dbc390-c33e-4e9e-b162-036799a1ae90"
+upload_url: "/_stcore/upload_file/d32ae3f5-9f95-47f9-a15c-3d1a17a4a9cd/93dbc390-c33e-4e9e-b162-036799a1ae90"
+delete_url: "/_stcore/upload_file/d32ae3f5-9f95-47f9-a15c-3d1a17a4a9cd/93dbc390-c33e-4e9e-b162-036799a1ae90"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-19 20:00:05,727 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 20:00:20,647 - __main__ - INFO - New input received - Query: hello, Image: True
+2025-04-19 20:00:21,583 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 20:00:21,589 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'hello'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='93dbc390-c33e-4e9e-b162-036799a1ae90', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "93dbc390-c33e-4e9e-b162-036799a1ae90"
+upload_url: "/_stcore/upload_file/d32ae3f5-9f95-47f9-a15c-3d1a17a4a9cd/93dbc390-c33e-4e9e-b162-036799a1ae90"
+delete_url: "/_stcore/upload_file/d32ae3f5-9f95-47f9-a15c-3d1a17a4a9cd/93dbc390-c33e-4e9e-b162-036799a1ae90"
+), 'location': '', 'query': 'hello', 'response': None}
+2025-04-19 20:00:21,589 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-19 20:04:55,237 - __main__ - INFO - Initializing session messages
+2025-04-19 20:04:55,238 - __main__ - INFO - Creating agent workflow
+2025-04-19 20:04:55,380 - __main__ - INFO - Initializing session messages
+2025-04-19 20:04:55,380 - __main__ - INFO - Creating agent workflow
+2025-04-19 20:05:00,745 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-19 20:05:01,953 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-19 20:05:01,972 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='db65877f-d991-4996-ac90-e93041b3eb5e', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "db65877f-d991-4996-ac90-e93041b3eb5e"
+upload_url: "/_stcore/upload_file/92634757-3bd7-476f-9ef8-6466ae65f018/db65877f-d991-4996-ac90-e93041b3eb5e"
+delete_url: "/_stcore/upload_file/92634757-3bd7-476f-9ef8-6466ae65f018/db65877f-d991-4996-ac90-e93041b3eb5e"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-19 20:05:01,972 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-21 13:14:26,993 - __main__ - INFO - Initializing session messages
+2025-04-21 13:14:26,993 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:14:38,409 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:14:48,563 - openai._base_client - INFO - Retrying request to /chat/completions in 0.492329 seconds
+2025-04-21 13:14:49,064 - openai._base_client - INFO - Retrying request to /chat/completions in 0.950924 seconds
+2025-04-21 13:14:50,021 - __main__ - ERROR - Error processing request: module 'openai' has no attribute 'error'
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 989, in _request
+    response = self._client.send(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 35, in route_query
+    response = router_model.invoke(router_prompt)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 368, in invoke
+    self.generate_prompt(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 937, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 759, in generate
+    self._generate_with_cache(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 1002, in _generate_with_cache
+    result = self._generate(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_openai/chat_models/base.py", line 991, in _generate
+    response = self.client.create(**payload)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py", line 929, in create
+    return self._post(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1276, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 949, in request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1023, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 197, in main
+    final_state = execute_workflow(st.session_state.workflow, initial_state)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/utils/langraph_workflow.py", line 93, in execute_workflow
+    result = app.invoke(state)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2739, in invoke
+    for chunk in self.stream(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2377, in stream
+    for _ in runner.tick(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/runner.py", line 158, in tick
+    run_with_retry(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/retry.py", line 39, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 622, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 376, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 43, in route_query
+    except openai.error.RateLimitError as e:
+AttributeError: module 'openai' has no attribute 'error'
+2025-04-21 13:42:21,818 - __main__ - INFO - Initializing session messages
+2025-04-21 13:42:21,819 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:42:28,959 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:42:55,708 - openai._base_client - INFO - Retrying request to /chat/completions in 0.391046 seconds
+2025-04-21 13:43:19,770 - openai._base_client - INFO - Retrying request to /chat/completions in 0.935921 seconds
+2025-04-21 13:43:40,757 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 13:43:40,777 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='d3f7b0ff-1474-4ad1-ab9d-422964199b8e', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "d3f7b0ff-1474-4ad1-ab9d-422964199b8e"
+upload_url: "/_stcore/upload_file/fe1dcd83-e3f4-4464-ac42-ba0364838508/d3f7b0ff-1474-4ad1-ab9d-422964199b8e"
+delete_url: "/_stcore/upload_file/fe1dcd83-e3f4-4464-ac42-ba0364838508/d3f7b0ff-1474-4ad1-ab9d-422964199b8e"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-21 13:43:40,777 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-21 13:48:47,188 - __main__ - INFO - Initializing session messages
+2025-04-21 13:48:47,189 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:48:47,281 - __main__ - INFO - Initializing session messages
+2025-04-21 13:48:47,281 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:48:52,319 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:49:02,418 - openai._base_client - INFO - Retrying request to /chat/completions in 0.420403 seconds
+2025-04-21 13:49:02,850 - openai._base_client - INFO - Retrying request to /chat/completions in 0.964913 seconds
+2025-04-21 13:49:03,829 - __main__ - ERROR - Error processing request: module 'openai' has no attribute 'error'
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 989, in _request
+    response = self._client.send(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 35, in route_query
+    response = router_model.invoke(router_prompt)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 368, in invoke
+    self.generate_prompt(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 937, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 759, in generate
+    self._generate_with_cache(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 1002, in _generate_with_cache
+    result = self._generate(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_openai/chat_models/base.py", line 991, in _generate
+    response = self.client.create(**payload)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py", line 929, in create
+    return self._post(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1276, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 949, in request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1023, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 197, in main
+    final_state = execute_workflow(st.session_state.workflow, initial_state)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/utils/langraph_workflow.py", line 93, in execute_workflow
+    result = app.invoke(state)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2739, in invoke
+    for chunk in self.stream(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2377, in stream
+    for _ in runner.tick(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/runner.py", line 158, in tick
+    run_with_retry(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/retry.py", line 39, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 622, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 376, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 43, in route_query
+    except openai.error.RateLimitError as e:
+AttributeError: module 'openai' has no attribute 'error'
+2025-04-21 13:49:27,714 - __main__ - INFO - Initializing session messages
+2025-04-21 13:49:27,714 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:49:29,230 - __main__ - INFO - Initializing session messages
+2025-04-21 13:49:29,230 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:49:31,221 - __main__ - INFO - Initializing session messages
+2025-04-21 13:49:31,221 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:49:37,835 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:49:37,890 - openai._base_client - INFO - Retrying request to /chat/completions in 0.469762 seconds
+2025-04-21 13:49:38,369 - openai._base_client - INFO - Retrying request to /chat/completions in 0.914714 seconds
+2025-04-21 13:49:39,293 - __main__ - ERROR - Error processing request: module 'openai' has no attribute 'error'
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 989, in _request
+    response = self._client.send(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 35, in route_query
+    response = router_model.invoke(router_prompt)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 368, in invoke
+    self.generate_prompt(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 937, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 759, in generate
+    self._generate_with_cache(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 1002, in _generate_with_cache
+    result = self._generate(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_openai/chat_models/base.py", line 991, in _generate
+    response = self.client.create(**payload)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py", line 929, in create
+    return self._post(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1276, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 949, in request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1023, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 197, in main
+    final_state = execute_workflow(st.session_state.workflow, initial_state)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/utils/langraph_workflow.py", line 93, in execute_workflow
+    result = app.invoke(state)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2739, in invoke
+    for chunk in self.stream(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2377, in stream
+    for _ in runner.tick(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/runner.py", line 158, in tick
+    run_with_retry(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/retry.py", line 39, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 622, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 376, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 43, in route_query
+    except openai.error.RateLimitError as e:
+AttributeError: module 'openai' has no attribute 'error'
+2025-04-21 13:50:24,857 - __main__ - INFO - Initializing session messages
+2025-04-21 13:50:24,857 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:50:30,117 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:50:40,209 - openai._base_client - INFO - Retrying request to /chat/completions in 0.493068 seconds
+2025-04-21 13:50:40,709 - openai._base_client - INFO - Retrying request to /chat/completions in 0.763371 seconds
+2025-04-21 13:50:41,485 - __main__ - ERROR - Error processing request: module 'openai' has no attribute 'error'
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 989, in _request
+    response = self._client.send(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 35, in route_query
+    response = router_model.invoke(router_prompt)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 368, in invoke
+    self.generate_prompt(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 937, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 759, in generate
+    self._generate_with_cache(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_core/language_models/chat_models.py", line 1002, in _generate_with_cache
+    result = self._generate(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langchain_openai/chat_models/base.py", line 991, in _generate
+    response = self.client.create(**payload)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/resources/chat/completions/completions.py", line 929, in create
+    return self._post(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1276, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 949, in request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1013, in _request
+    return self._retry_request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1091, in _retry_request
+    return self._request(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/openai/_base_client.py", line 1023, in _request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 197, in main
+    final_state = execute_workflow(st.session_state.workflow, initial_state)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/utils/langraph_workflow.py", line 93, in execute_workflow
+    result = app.invoke(state)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2739, in invoke
+    for chunk in self.stream(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/__init__.py", line 2377, in stream
+    for _ in runner.tick(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/runner.py", line 158, in tick
+    run_with_retry(
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/pregel/retry.py", line 39, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 622, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/langgraph/utils/runnable.py", line 376, in invoke
+    ret = self.func(*args, **kwargs)
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/agents/router_agent.py", line 43, in route_query
+    except openai.error.RateLimitError as e:
+AttributeError: module 'openai' has no attribute 'error'
+2025-04-21 13:51:15,127 - __main__ - INFO - Initializing session messages
+2025-04-21 13:51:15,127 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:51:19,563 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:51:39,354 - openai._base_client - INFO - Retrying request to /chat/completions in 0.476945 seconds
+2025-04-21 13:51:57,829 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 13:51:57,848 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='91551a65-1474-4d0e-936e-fd8f9d043f24', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "91551a65-1474-4d0e-936e-fd8f9d043f24"
+upload_url: "/_stcore/upload_file/8edd9e3c-4997-4e60-8519-ed70ad16cce7/91551a65-1474-4d0e-936e-fd8f9d043f24"
+delete_url: "/_stcore/upload_file/8edd9e3c-4997-4e60-8519-ed70ad16cce7/91551a65-1474-4d0e-936e-fd8f9d043f24"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-21 13:51:57,849 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-21 13:54:05,800 - __main__ - INFO - Initializing session messages
+2025-04-21 13:54:05,800 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:54:06,217 - __main__ - INFO - Initializing session messages
+2025-04-21 13:54:06,217 - __main__ - INFO - Creating agent workflow
+2025-04-21 13:54:11,567 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 13:54:38,601 - openai._base_client - INFO - Retrying request to /chat/completions in 0.424235 seconds
+2025-04-21 13:54:52,784 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 13:54:52,798 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='4b4fd2cd-c821-461c-8698-a0ed06391c49', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "4b4fd2cd-c821-461c-8698-a0ed06391c49"
+upload_url: "/_stcore/upload_file/f1841f57-c507-48f6-bf8c-3e2af1be5a92/4b4fd2cd-c821-461c-8698-a0ed06391c49"
+delete_url: "/_stcore/upload_file/f1841f57-c507-48f6-bf8c-3e2af1be5a92/4b4fd2cd-c821-461c-8698-a0ed06391c49"
+), 'location': '', 'query': 'Please analyze this image', 'response': None}
+2025-04-21 13:54:52,799 - __main__ - ERROR - The ISSUE_DETECTION agent failed to generate a response
+2025-04-21 14:03:17,857 - __main__ - INFO - Initializing session messages
+2025-04-21 14:03:17,858 - __main__ - INFO - Creating agent workflow
+2025-04-21 14:03:17,996 - __main__ - INFO - Initializing session messages
+2025-04-21 14:03:17,996 - __main__ - INFO - Creating agent workflow
+2025-04-21 14:03:25,371 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 14:03:26,898 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 14:03:29,036 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-04-21 14:03:29,039 - agents.issue_agent - ERROR - Analysis failed: Error code: 404 - {'error': {'message': 'The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-04-21 14:03:29,039 - agents.issue_agent - ERROR - Issue detection failed: Failed to analyze image
+2025-04-21 14:03:29,041 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='2c6b89c9-fb35-4df8-9b1d-68a803edfe30', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "2c6b89c9-fb35-4df8-9b1d-68a803edfe30"
+upload_url: "/_stcore/upload_file/2c91f9f2-08d0-4739-9acb-34c109e03457/2c6b89c9-fb35-4df8-9b1d-68a803edfe30"
+delete_url: "/_stcore/upload_file/2c91f9f2-08d0-4739-9acb-34c109e03457/2c6b89c9-fb35-4df8-9b1d-68a803edfe30"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': 'Unable to analyze the image: Failed to analyze image'}}
+2025-04-21 14:03:29,042 - __main__ - INFO - Displaying assistant response
+2025-04-21 14:08:23,495 - __main__ - INFO - Initializing session messages
+2025-04-21 14:08:23,496 - __main__ - INFO - Creating agent workflow
+2025-04-21 14:08:28,468 - __main__ - INFO - Initializing session messages
+2025-04-21 14:08:28,470 - __main__ - INFO - Creating agent workflow
+2025-04-21 14:08:28,515 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 14:08:30,103 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 14:08:49,665 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 14:08:49,672 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='cfba2d75-bfca-42ab-9c69-8cf07222fe1c', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "cfba2d75-bfca-42ab-9c69-8cf07222fe1c"
+upload_url: "/_stcore/upload_file/dd12ab31-305d-42f0-ae83-52792aa5a75a/cfba2d75-bfca-42ab-9c69-8cf07222fe1c"
+delete_url: "/_stcore/upload_file/dd12ab31-305d-42f0-ae83-52792aa5a75a/cfba2d75-bfca-42ab-9c69-8cf07222fe1c"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': "The image shows a deteriorated brick wall with several issues:\n\n1. **Missing Bricks and Mortar**: There is a significant portion of the wall where bricks are missing, exposing the inner layer of bricks. This suggests structural integrity issues, as the wall is not fully intact.\n\n2. **Cracked and Crumbling Mortar**: The mortar between the bricks is visibly cracked and crumbling in several areas. This degradation can compromise the wall's stability and make it susceptible to further damage from environmental factors like water and frost.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion and flaking, which indicates exposure to harsh weather conditions over time. This erosion weakens the bricks and reduces their ability to support the structure.\n\n4. **Possible Water Damage**: The pattern of damage and the discoloration on some bricks might suggest past water infiltration, which can cause the mortar to weaken and bricks to deteriorate faster.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a professional mason should assess the wall to determine the full extent of the damage and the structural integrity of the wall.\n- **Repointing**: This involves removing the old mortar and replacing it with new mortar, which can help restore the structural stability of the wall.\n- **Replacing Damaged Bricks**: Severely damaged or missing bricks should be replaced to ensure the wall can support any loads and resist environmental factors.\n- **Waterproofing**: After repairs, consider applying a waterproof sealant to protect the wall from future water damage.\n\nImmediate action is recommended to prevent further deterioration and to ensure the safety and stability of the structure."}}
+2025-04-21 14:08:49,674 - __main__ - INFO - Displaying assistant response
+2025-04-21 14:09:57,624 - __main__ - INFO - Initializing session messages
+2025-04-21 14:09:57,625 - __main__ - INFO - Creating agent workflow
+2025-04-21 14:10:03,976 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 14:10:05,439 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 14:10:08,137 - __main__ - INFO - Initializing session messages
+2025-04-21 14:10:08,137 - __main__ - INFO - Creating agent workflow
+2025-04-21 14:10:20,676 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 14:10:20,681 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='008f51f3-8800-4dd9-bcb1-fcb3d79eaaa4', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "008f51f3-8800-4dd9-bcb1-fcb3d79eaaa4"
+upload_url: "/_stcore/upload_file/0ccaa53d-36fe-4e8c-b079-5e06effa30bf/008f51f3-8800-4dd9-bcb1-fcb3d79eaaa4"
+delete_url: "/_stcore/upload_file/0ccaa53d-36fe-4e8c-b079-5e06effa30bf/008f51f3-8800-4dd9-bcb1-fcb3d79eaaa4"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': "The image shows a brick wall with significant structural and material damage. Here are the key issues visible:\n\n1. **Brick Displacement and Loss**: Several bricks are missing, and others are visibly displaced. This suggests a loss of structural integrity in this section of the wall.\n\n2. **Mortar Deterioration**: The mortar between the bricks is crumbling and missing in several areas. This deterioration can compromise the wall's stability and make it susceptible to further damage.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion, which can be caused by weathering or possibly chemical degradation. This erosion weakens the bricks and reduces their ability to bear loads.\n\n4. **Potential Water Damage**: The pattern of damage could be indicative of water infiltration, which can cause the mortar to weaken and bricks to displace or erode over time.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a qualified mason should assess the wall to determine the full extent of the damage and the risk it poses.\n- **Stabilization**: Temporary supports might be needed to prevent further collapse until permanent repairs can be made.\n- **Repointing**: Removing the old mortar and replacing it with new mortar (repointing) can help restore the structural integrity of the wall.\n- **Brick Replacement**: Severely damaged or missing bricks should be replaced with new ones that match the existing bricks in size, color, and material.\n- **Waterproofing**: If water damage is confirmed, implementing waterproofing measures will be crucial to prevent future issues.\n\nThis wall requires immediate attention to prevent potential collapse and to ensure safety."}}
+2025-04-21 14:10:33,713 - __main__ - INFO - New input received - Query: what is laws regarding tenancy in London?, Image: False
+2025-04-21 14:10:36,877 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 14:10:36,882 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'what is laws regarding tenancy in London?'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': 'London', 'query': 'what is laws regarding tenancy in London?', 'response': {'agent': 'Tenancy FAQ Agent', 'answer': "In London, tenants have certain rights and protections under the law. Here are some key points to keep in mind:\n\n1. Notice Periods: Most jurisdictions, including London, require 30-60 days notice from both landlords and tenants before ending a lease. Specific notice periods can vary, so it's important to check your lease agreement.\n\n2. Security Deposits: Landlords in London must typically return security deposits within 14-30 days after move-out, minus valid deductions. They are usually required to provide an itemized list of deductions.\n\n3. Repairs: Landlords in London are responsible for maintaining habitable conditions and essential services. Tenants should promptly report any issues and allow reasonable access for repairs to be carried out.\n\n4. Rent Increases: London, like most jurisdictions, limits how often and by how much rent can be increased. Notice periods for rent increases commonly range from 30-90 days.\n\n5. Eviction: Legal eviction in London requires proper notice, valid cause, and adherence to court procedures. Self-help evictions, such as changing locks or removing belongings, are typically illegal.\n\nIf you have any specific questions or need further information about tenancy laws in London, feel free to ask.", 'location_used': 'London'}}
+2025-04-21 14:10:36,883 - __main__ - INFO - Displaying assistant response
+2025-04-21 17:25:30,285 - __main__ - INFO - Initializing session messages
+2025-04-21 17:25:30,285 - __main__ - INFO - Creating agent workflow
+2025-04-21 17:25:41,989 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 17:25:42,010 - __main__ - ERROR - Error processing request: initialize_state() got an unexpected keyword argument 'chat_history'
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 208, in main
+    initial_state = initialize_state(
+TypeError: initialize_state() got an unexpected keyword argument 'chat_history'
+2025-04-21 17:31:09,539 - __main__ - INFO - Initializing session messages
+2025-04-21 17:31:09,540 - __main__ - INFO - Creating agent workflow
+2025-04-21 17:31:17,121 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 17:31:18,949 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:31:31,873 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:31:31,877 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='eed71c16-dd6a-49b5-b115-7521f2787aba', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "eed71c16-dd6a-49b5-b115-7521f2787aba"
+upload_url: "/_stcore/upload_file/f79eea26-68bc-4045-bf2a-89a801a32a9f/eed71c16-dd6a-49b5-b115-7521f2787aba"
+delete_url: "/_stcore/upload_file/f79eea26-68bc-4045-bf2a-89a801a32a9f/eed71c16-dd6a-49b5-b115-7521f2787aba"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': "The image shows a brick wall with significant structural damage. Here are the key issues visible in the image:\n\n1. **Brick Displacement and Loss**: Several bricks are missing from the wall, creating a large hole. This indicates a loss of structural integrity in this section of the wall.\n\n2. **Mortar Deterioration**: The mortar between the bricks appears to be crumbling and eroded in many areas. This erosion compromises the wall's stability and makes it susceptible to further damage.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion and weathering. This can weaken the bricks over time, making them less capable of bearing loads.\n\n4. **Potential Water Damage**: The pattern of erosion and the types of discoloration suggest that water may have penetrated the wall, exacerbating the deterioration of both bricks and mortar.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a qualified mason should assess the wall to determine the full extent of the damage and the risk it poses.\n- **Stabilization**: Temporary supports might be necessary to prevent further collapse until permanent repairs can be made.\n- **Rebuilding the Damaged Section**: This will likely involve removing the unstable bricks and mortar and rebuilding with new, matching materials to ensure structural integrity and aesthetic consistency.\n- **Waterproofing**: After repairs, consider applying a waterproof sealant to protect the wall from future water damage.\n- **Regular Maintenance**: Regular inspections and maintenance going forward will be crucial to catch and mitigate any future deterioration early.\n\nThis wall definitely needs professional attention to ensure safety and restore its structural integrity."}}
+2025-04-21 17:31:31,878 - __main__ - INFO - Displaying assistant response
+2025-04-21 17:34:45,551 - __main__ - INFO - Initializing session messages
+2025-04-21 17:34:45,551 - __main__ - INFO - Creating agent workflow
+2025-04-21 17:34:58,145 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 17:34:59,591 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:35:13,348 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:35:13,351 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='9dc22445-e3cd-4f80-a3ba-e6c89a19e405', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "9dc22445-e3cd-4f80-a3ba-e6c89a19e405"
+upload_url: "/_stcore/upload_file/e8dda62d-22cd-40ac-bd16-6e6b2d93cb1c/9dc22445-e3cd-4f80-a3ba-e6c89a19e405"
+delete_url: "/_stcore/upload_file/e8dda62d-22cd-40ac-bd16-6e6b2d93cb1c/9dc22445-e3cd-4f80-a3ba-e6c89a19e405"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': 'The image shows a deteriorating brick wall with several issues:\n\n1. **Brick Displacement and Loss**: There are visible gaps where bricks have either fallen out or been removed. This suggests structural instability in this section of the wall.\n\n2. **Mortar Degradation**: The mortar between the bricks appears to be crumbling and eroded, which compromises the wall’s integrity and its ability to hold the bricks in place.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion and flaking, which can be caused by exposure to weather elements, poor quality bricks, or water damage.\n\n4. **Potential Water Damage**: The pattern of erosion and the types of decay visible suggest that water may have infiltrated the wall, exacerbating the deterioration of both bricks and mortar.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a professional mason should assess the wall to determine the full extent of the damage and the risk it poses.\n- **Stabilization**: Temporary supports might be needed to prevent further collapse until permanent repairs can be made.\n- **Repointing**: Removing the old mortar and replacing it with new mortar (repointing) can help restore the structural integrity of the wall.\n- **Brick Replacement**: Severely damaged or missing bricks should be replaced with new ones that match the existing wall in terms of size, color, and material.\n- **Waterproofing**: After repairs, consider applying a breathable waterproof sealant to protect the wall from further water damage.\n\nThis wall requires immediate attention to prevent further deterioration and to ensure safety.'}}
+2025-04-21 17:35:13,353 - __main__ - INFO - Displaying assistant response
+2025-04-21 17:35:13,408 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 17:35:14,392 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:35:31,905 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:35:31,910 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='9dc22445-e3cd-4f80-a3ba-e6c89a19e405', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "9dc22445-e3cd-4f80-a3ba-e6c89a19e405"
+upload_url: "/_stcore/upload_file/e8dda62d-22cd-40ac-bd16-6e6b2d93cb1c/9dc22445-e3cd-4f80-a3ba-e6c89a19e405"
+delete_url: "/_stcore/upload_file/e8dda62d-22cd-40ac-bd16-6e6b2d93cb1c/9dc22445-e3cd-4f80-a3ba-e6c89a19e405"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': "The image shows a deteriorating brick wall with several issues:\n\n1. **Brick Displacement and Loss**: There are bricks that have fallen out, particularly noticeable in the central area where there is a large hole. This suggests structural instability in this section of the wall.\n\n2. **Mortar Degradation**: The mortar between the bricks appears to be crumbling and eroded in many areas. This degradation can compromise the wall's integrity and its ability to bear loads.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion and flaking, which can be due to exposure to weather elements, poor quality bricks, or age.\n\n4. **Potential Moisture Issues**: The discoloration and patches of dampness on the bricks and mortar could indicate moisture penetration, which can exacerbate the degradation of both bricks and mortar.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a qualified mason should assess the wall to determine the extent of the damage and the risk it poses.\n- **Stabilization**: Temporary supports might be needed to prevent further collapse during repair work.\n- **Repointing and Rebuilding**: Damaged mortar should be removed and replaced (repointing), and missing or severely damaged bricks should be replaced with new ones that match the existing brick in size, color, and material.\n- **Moisture Control**: It is crucial to identify and rectify any underlying issues causing moisture buildup, such as poor drainage or leaks.\n- **Sealing and Protection**: Applying a breathable sealant can help protect the bricks and mortar from further weather-related damage.\n\nThis wall requires immediate attention to prevent further deterioration and to ensure safety."}}
+2025-04-21 17:48:58,545 - __main__ - INFO - Initializing session messages
+2025-04-21 17:48:58,546 - __main__ - INFO - Creating agent workflow
+2025-04-21 17:49:06,516 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 17:49:07,844 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:49:19,620 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:49:19,626 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='35f0c85a-521d-475e-8c7c-16b8017f506a', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "35f0c85a-521d-475e-8c7c-16b8017f506a"
+upload_url: "/_stcore/upload_file/f835b87d-8de1-4aba-92d6-094821d31a94/35f0c85a-521d-475e-8c7c-16b8017f506a"
+delete_url: "/_stcore/upload_file/f835b87d-8de1-4aba-92d6-094821d31a94/35f0c85a-521d-475e-8c7c-16b8017f506a"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': "The image shows a brick wall with significant structural and material damage. Here are the key issues visible:\n\n1. **Brick Displacement and Loss**: Several bricks are missing, and others are visibly displaced. This suggests a loss of structural integrity in this section of the wall.\n\n2. **Mortar Deterioration**: The mortar between the bricks is crumbling and missing in many areas. This deterioration compromises the wall's stability and increases the risk of further brick displacement or collapse.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion, which can be caused by weathering or exposure to moisture over time. This erosion weakens the bricks, making them more susceptible to damage.\n\n4. **Potential Water Damage**: The pattern of damage could indicate past water infiltration, which exacerbates problems like mortar deterioration and brick erosion.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a qualified mason should assess the wall to determine the full extent of the damage and the risk it poses.\n- **Stabilization**: Temporary supports might be necessary to prevent further damage or collapse during repair work.\n- **Repointing**: Removing the old mortar and replacing it with new mortar (repointing) will help restore the structural integrity of the wall.\n- **Brick Replacement**: Severely damaged or missing bricks should be replaced with new ones that match the existing wall in terms of size, color, and material.\n- **Waterproofing**: After repairs, consider applying a waterproof sealant to protect the wall from future water damage.\n\nThis repair will not only restore the aesthetic appearance of the wall but also ensure its structural safety and longevity."}}
+2025-04-21 17:49:19,628 - __main__ - INFO - Displaying assistant response
+2025-04-21 17:49:57,256 - __main__ - INFO - New input received - Query: what is tenancy laws in UK ?, Image: True
+2025-04-21 17:49:58,327 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:50:00,510 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 17:50:00,515 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'what is tenancy laws in UK ?'}], 'agent_type': 'TENANCY_FAQ', 'image': UploadedFile(file_id='35f0c85a-521d-475e-8c7c-16b8017f506a', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "35f0c85a-521d-475e-8c7c-16b8017f506a"
+upload_url: "/_stcore/upload_file/f835b87d-8de1-4aba-92d6-094821d31a94/35f0c85a-521d-475e-8c7c-16b8017f506a"
+delete_url: "/_stcore/upload_file/f835b87d-8de1-4aba-92d6-094821d31a94/35f0c85a-521d-475e-8c7c-16b8017f506a"
+), 'location': 'UK', 'query': 'what is tenancy laws in UK ?', 'response': {'agent': 'Tenancy FAQ Agent', 'answer': "In the UK, tenants have specific protections under the Housing Act. Landlords are required to protect security deposits in government-approved schemes within 30 days of receipt. When it comes to eviction, the main procedures are Section 21 for no-fault evictions and Section 8 for evictions with cause. It's important for both landlords and tenants to adhere to these regulations to ensure a fair and legal tenancy agreement. If you have any specific questions or need further clarification, feel free to ask.", 'location_used': 'UK'}}
+2025-04-21 17:50:00,516 - __main__ - INFO - Displaying assistant response
+2025-04-21 17:59:27,312 - __main__ - INFO - Initializing session messages
+2025-04-21 17:59:27,312 - __main__ - INFO - Creating agent workflow
+2025-04-21 17:59:38,878 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 17:59:38,879 - __main__ - ERROR - Error processing request: `st.session_state.file_uploader` cannot be modified after the widget with key `file_uploader` is instantiated.
+Traceback (most recent call last):
+  File "/Users/harshrajsahu/Desktop/AI_Agents_Prob/MultiAgent_Real_Estate_CB/app.py", line 229, in main
+    st.session_state["file_uploader"] = None
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/streamlit/runtime/metrics_util.py", line 397, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 103, in __setitem__
+    get_session_state()[key] = value
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 98, in __setitem__
+    self._state[key] = value
+  File "/opt/anaconda3/envs/prom_env/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 461, in __setitem__
+    raise StreamlitAPIException(
+streamlit.errors.StreamlitAPIException: `st.session_state.file_uploader` cannot be modified after the widget with key `file_uploader` is instantiated.
+2025-04-21 18:21:32,588 - __main__ - INFO - Initializing session messages
+2025-04-21 18:21:32,588 - __main__ - INFO - Creating agent workflow
+2025-04-21 18:21:32,878 - __main__ - INFO - Initializing session messages
+2025-04-21 18:21:32,879 - __main__ - INFO - Creating agent workflow
+2025-04-21 18:21:41,856 - __main__ - INFO - New input received - Query: None, Image: True
+2025-04-21 18:21:43,233 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 18:21:56,218 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 18:21:56,223 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'Please analyze this image'}], 'agent_type': 'ISSUE_DETECTION', 'image': UploadedFile(file_id='dbc863a2-a133-47b9-8336-7c3a652495ba', name='ai-generated-a-hole-reveals-through-a-broken-brown-brick-wall-hinting-at-hidden-secrets-evocative-ai-generated-photo.jpg', type='image/jpeg', size=72752, _file_urls=file_id: "dbc863a2-a133-47b9-8336-7c3a652495ba"
+upload_url: "/_stcore/upload_file/4ef5e938-ebc0-4191-893a-5b78e7c93c35/dbc863a2-a133-47b9-8336-7c3a652495ba"
+delete_url: "/_stcore/upload_file/4ef5e938-ebc0-4191-893a-5b78e7c93c35/dbc863a2-a133-47b9-8336-7c3a652495ba"
+), 'location': '', 'query': 'Please analyze this image', 'response': {'agent': 'Issue Detection Agent', 'analysis': "The image shows a deteriorating brick wall with several issues:\n\n1. **Brick Displacement and Loss**: There are visible gaps where bricks have either fallen out or are severely displaced. This suggests a loss of structural integrity in parts of the wall.\n\n2. **Mortar Degradation**: The mortar between the bricks appears to be crumbling and eroded in several areas. This degradation can compromise the wall's stability and its ability to withstand environmental stresses.\n\n3. **Surface Erosion**: The surface of many bricks shows signs of erosion and flaking, which is often caused by exposure to weather elements like rain, wind, and possibly freeze-thaw cycles.\n\n4. **Potential Water Damage**: The pattern of erosion and the types of defects suggest that water may have penetrated the wall, exacerbating the deterioration. Water damage can lead to further weakening of the structure as it affects both bricks and mortar.\n\n### Recommendations for Repair:\n- **Assessment by a Professional**: A structural engineer or a professional mason should assess the wall to determine the full extent of the damage and the risk it poses.\n- **Stabilization**: Temporary supports might be needed to prevent further collapse until permanent repairs can be made.\n- **Repointing**: Removing the old, damaged mortar and replacing it with new mortar (repointing) can help restore the structural integrity of the wall.\n- **Brick Replacement**: Severely damaged or missing bricks should be replaced with new ones that match the existing wall in terms of size, color, and material.\n- **Waterproofing**: After repairs, consider applying a breathable waterproofing sealant to protect the wall from further water ingress.\n\nThis repair process will help in restoring the wall’s structural integrity and prolonging its lifespan."}}
+2025-04-21 18:21:56,224 - __main__ - INFO - Displaying assistant response
+2025-04-21 18:22:23,658 - __main__ - INFO - New input received - Query: what are the tenancy laws in UK ?, Image: False
+2025-04-21 18:22:25,695 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-21 18:22:25,701 - __main__ - INFO - Workflow execution result: {'messages': [{'role': 'user', 'content': 'what are the tenancy laws in UK ?'}], 'agent_type': 'TENANCY_FAQ', 'image': None, 'location': 'UK', 'query': 'what are the tenancy laws in UK ?', 'response': {'agent': 'Tenancy FAQ Agent', 'answer': "In the UK, tenants have specific protections under the Housing Act. Landlords are required to protect tenants' deposits in government-approved schemes within 30 days of receipt. When it comes to eviction, there are two main procedures: Section 21 for no-fault evictions and Section 8 for evictions with cause. It's essential for both landlords and tenants to understand these procedures to ensure a fair and legal tenancy agreement. If you have any specific questions about UK tenancy laws or need further clarification, feel free to ask.", 'location_used': 'UK'}}
+2025-04-21 18:22:25,701 - __main__ - INFO - Displaying assistant response

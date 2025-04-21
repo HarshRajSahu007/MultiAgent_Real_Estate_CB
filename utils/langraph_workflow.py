@@ -39,10 +39,10 @@ def create_agent_workflow():
     
     # Add conditional edges with string keys
     workflow.add_conditional_edges(
-        "router",
+        "router",route_to_issue_detection,
         {
-            "issue_detection": route_to_issue_detection,
-            "tenancy_faq": route_to_tenancy_faq,
+            True: "issue_detection",
+            False: "tenancy_faq",
         }
     )
     

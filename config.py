@@ -9,7 +9,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Agent configuration
 TENANCY_FAQ_MODEL = "gpt-3.5-turbo"       
-ISSUE_DETECTION_MODEL = "gpt-4-vision-preview" 
+ISSUE_DETECTION_MODEL = "gpt-4-turbo" 
 ROUTER_MODEL = "gpt-3.5-turbo"    
 
 # Default temperature settings

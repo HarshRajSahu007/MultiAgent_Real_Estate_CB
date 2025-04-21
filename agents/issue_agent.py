@@ -11,7 +11,7 @@ def process_issue(state: Dict[str, Any]) -> Dict[str, Any]:
     try:
         query = state.get("query", "Please analyze this image")
         image = state.get("image")
-        
+        print("Inside Process issue function")
         if not image:
             raise ValueError("No image provided for analysis")
             
@@ -75,3 +75,12 @@ def process_issue(state: Dict[str, Any]) -> Dict[str, Any]:
         }
         
     return state
+
+class IssueDetectionAgent:
+    def run(self, image_bytes, query):
+        state = {
+            "query": query,
+            "image": image_bytes
+        }
+        result_state = process_issue(state)
+        return result_state.get("response")

@@ -6,6 +6,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from typing import Optional, Dict, Any
 import traceback
+import hashlib
 
 # Configure logging
 def setup_logging():
@@ -38,6 +39,22 @@ st.set_page_config(
     page_icon="🏠",
     layout="centered"
 )
+
+def hash_uploaded_file(uploaded_file):
+    """Generate SHA256 hash of the uploaded image's content"""
+    if uploaded_file is None:
+        return None
+    file_bytes = uploaded_file.read()
+    uploaded_file.seek(0)  # Reset pointer after reading
+    return hashlib.sha256(file_bytes).hexdigest()
+
+# Initialize session states
+if "last_image_hash" not in st.session_state:
+    st.session_state.last_image_hash = None
+if "clear_file_uploader" not in st.session_state:
+    st.session_state.clear_file_uploader = False
+if "file_uploader_key" not in st.session_state:
+    st.session_state.file_uploader_key = 0
 
 st.markdown("""
 <style>
@@ -91,6 +108,9 @@ st.markdown("""
         border-radius: 0.5rem;
         background-color: #f8d7da;
     }
+    .file-uploader {
+        padding: 0.5rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -110,6 +130,12 @@ def display_assistant_message(response: Dict[str, Any]):
 
 def main():
     """Main application logic"""
+    # Clear file uploader if flag is set
+    if st.session_state.clear_file_uploader:
+        st.session_state.clear_file_uploader = False
+        st.session_state.file_uploader_key += 1
+        st.rerun()
+
     # Initialize session state
     if 'messages' not in st.session_state:
         logger.info("Initializing session messages")
@@ -148,46 +174,73 @@ def main():
         - Adding location helps with location-specific answers
         """)
 
+        if st.button("Clear Conversation"):
+            st.session_state.messages = []
+            st.session_state.last_image_hash = None
+            st.session_state.clear_file_uploader = True
+            st.rerun()
+
     # Chat interface
-    user_query = st.chat_input("Type your message here...")
-    uploaded_image = st.file_uploader("Upload an image (optional)", type=["jpg", "jpeg", "png"])
+    col1, col2 = st.columns([4, 1])
+    with col1:
+        user_query = st.chat_input("Type your message here...", key="chat_input")
+    with col2:
+        uploaded_image = st.file_uploader(
+            "Upload image", 
+            type=["jpg", "jpeg", "png"], 
+            label_visibility="collapsed",
+            key=f"file_uploader_{st.session_state.file_uploader_key}"
+        )
+
+    # Check for new image upload
+    current_image_hash = hash_uploaded_file(uploaded_image) if uploaded_image else None
+    new_image_uploaded = (current_image_hash is not None and 
+                         current_image_hash != st.session_state.last_image_hash)
 
     # Display message history
     for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            if message["role"] == "user":
-                st.markdown(message["content"])
-                if "image" in message and message["image"] is not None:
+        if message["role"] == "user":
+            with st.chat_message("user"):
+                if message.get("content"):
+                    st.markdown(message["content"])
+                if message.get("image"):
                     st.image(message["image"], caption="Uploaded Image", use_column_width=True)
+        else:  # assistant
+            if isinstance(message, dict):
+                display_assistant_message(message)
             else:
-                if isinstance(message, dict):
-                    display_assistant_message(message)
-                else:
+                with st.chat_message("assistant"):
                     st.markdown(str(message))
 
     # Process new input
-    if user_query or uploaded_image:
+    if user_query or new_image_uploaded:
         logger.info(f"New input received - Query: {user_query}, Image: {uploaded_image is not None}")
         try:
+            # Update image hash in session state
+            if uploaded_image:
+                st.session_state.last_image_hash = current_image_hash
+
             # Add user message to history
             user_message = {
                 "role": "user",
-                "content": user_query or "Please analyze this image",
-                "image": uploaded_image
+                "content": user_query if user_query else "Please analyze this image",
+                "image": uploaded_image if new_image_uploaded else None
             }
+            
             st.session_state.messages.append(user_message)
             logger.debug(f"Added user message to history: {user_message}")
             
-            # Display user message
+            # Display user message immediately
             with st.chat_message("user"):
-                st.markdown(user_message["content"])
-                if uploaded_image:
+                if user_query:
+                    st.markdown(user_query)
+                if uploaded_image and new_image_uploaded:
                     st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
 
-            # Initialize state with proper arguments
+            # Initialize state
             initial_state = initialize_state(
-                query=user_query or "Please analyze this image",
-                image=uploaded_image,
+                query=user_query if user_query else "Please analyze this image",
+                image=uploaded_image if new_image_uploaded else None,
                 location=location
             )
             logger.debug(f"Initial state: {initial_state}")
@@ -223,8 +276,15 @@ def main():
 
             # Display the successful response
             logger.info("Displaying assistant response")
-            st.session_state.messages.append({"role": "assistant", **response})
-            display_assistant_message(response)
+            assistant_message = {"role": "assistant", **response}
+            st.session_state.messages.append(assistant_message)
+            
+            # Clear the file uploader after processing
+            if new_image_uploaded:
+                st.session_state.clear_file_uploader = True
+            
+            # Rerun to display the new message in the correct order
+            st.rerun()
 
         except Exception as e:
             logger.error(f"Error processing request: {str(e)}", exc_info=True)
